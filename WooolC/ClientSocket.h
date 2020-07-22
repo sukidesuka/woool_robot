@@ -1,0 +1,46 @@
+#pragma once
+#include "StdAfx.h"
+
+enum	__GAMESTATE
+{
+	WGS_LOGINGATE,
+	WGS_SELGATE,
+	WGS_GAMEGATE,
+	/*	MGS_NOCONNECTION,
+		MGS_GATECONNECTED,
+		MGS_WAITINGCHECKINFO,
+		MGS_MAKECLIENTINFO,
+		MGS_WAITINGCHECKPASS,
+		MGS_CLIENTCHECKPASSED,
+		MGS_MODIFYPASSWORDWAIT,
+		MGS_REGNEWACCOUNTWAIT,
+		MGS_LOGINWAITING,
+		MGS_SELECTSERVER,
+		MGS_WAITFORSELCHARADDRESS,
+		MGS_GOTSELCHARADDRESS,
+		MGS_SELCHARCONNECTED,
+		MGS_WAITFORSELCHARVERIFY,
+		MGS_WAITFORSELCHAR,
+		MGS_WAITFORGAMESERVERADDRESS,
+		MGS_GAMESERVERCONNECTED,
+		MGS_WAITFORGAMESERVERVERIFY,
+		MGS_WAITFORENTERGAME,
+		MGS_ENTEREDGAME,*/
+};
+
+
+// CClientSocket ÃüÁîÄ¿±ê
+
+class CClientSocket : public CAsyncSocket
+{
+public:
+	CClientSocket(CWnd* pNotifyWnd);
+	virtual ~CClientSocket();
+	virtual void OnConnect(int nErrorCode);
+	virtual void OnReceive(int nErrorCode);
+	virtual void OnClose(int nErrorCode);
+	CWnd* pWnd;
+public:
+	int SendString(LPCTSTR string);
+	int SendMsg(MMSG* msg, const char* data);
+};
