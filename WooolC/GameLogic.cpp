@@ -388,7 +388,7 @@ BOOL CMainFrame::GameLoop(const MMSG& msg, const char* data, CClientSocket* sock
 				str2 = ParseActorName(GetActorByIndex(msg.dwFlag)->name);
 			}
 			str.Format("%s µÄ HP:%d/%d MP:%d", str2, msg.w1, msg.w3, msg.w2);
-			LogSystem(str);
+			//LogSystem(str);
 		}
 		//OnHpChange(recv_msg.head.w1,recv_msg.head.w3);
 		//OnMpChange(recv_msg.head.w2,0);
@@ -510,9 +510,9 @@ BOOL CMainFrame::GameLoop(const MMSG& msg, const char* data, CClientSocket* sock
 			{
 				ZeroMemory(strbuf, 16);
 				memcpy(strbuf, p->name, ((p->magic > 14) ? 14 : p->magic));
-				m_BodyItem[p->idx].name = strbuf;
-				m_BodyItem[p->idx].dura.low = p->dura;
-				m_BodyItem[p->idx].dura.hi = p->dura_max;
+				//m_BodyItem[p->idx].name = strbuf;
+				//m_BodyItem[p->idx].dura.low = p->dura;
+				//m_BodyItem[p->idx].dura.hi = p->dura_max;
 				p++;
 			}
 		}

@@ -29,13 +29,14 @@ CMainFrame::CMainFrame() noexcept
 	, m_DStarWidth(0)
 	, m_DStarHeight(0)
 {
-	m_account = "srauni";
+	m_account = "saber";
 	m_password = "123456";
 	m_server_host = "192.168.1.107";
 	m_server_port = 7000;
-	m_server_name = "落霞";
+	m_server_name = "丹霞";
 	m_game_path = "C:\\Program Files (x86)\\Shanda\\Woool\\";
 
+	// 程序开端就直接进入登陆流程
 	this->OnLoginGame();
 }
 
