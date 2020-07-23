@@ -1,7 +1,12 @@
-#include "StdAfx.h"
-
-int main(void)
-{
-	
-	return 0;
-}
+//#include "framework.h"
+//#include "MainFrm.h"
+//
+//CMainFrame f;
+//
+//int main(void)
+//{
+//	LogSystem("fuckyou");
+//	
+//	
+//	return 0;
+//}

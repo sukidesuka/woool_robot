@@ -1,6 +1,6 @@
-#include "StdAfx.h"
+#include "framework.h"
 #include "ClientSocket.h"
-#include "MainFram.h"
+#include "MainFrm.h"
 
 // CClientSocket
 CClientSocket::CClientSocket(CWnd* pNotifyWnd)

@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "framework.h"
 #include "woolmap.h"
 
 CWoolMap::CWoolMap(void)

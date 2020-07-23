@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "framework.h"
 #include <iostream>
 void LogSystem(LPCTSTR log, COLORREF tc)
 {

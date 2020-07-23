@@ -1,5 +1,5 @@
 #pragma once
-#include "StdAfx.h"
+#include "framework.h"
 
 enum	__GAMESTATE
 {
@@ -27,7 +27,6 @@ enum	__GAMESTATE
 		MGS_WAITFORENTERGAME,
 		MGS_ENTEREDGAME,*/
 };
-
 
 // CClientSocket ÃüÁîÄ¿±ê
 

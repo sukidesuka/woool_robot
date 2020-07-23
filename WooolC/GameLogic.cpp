@@ -1,5 +1,5 @@
-#include "StdAfx.h"
-#include "MainFram.h"
+#include "framework.h"
+#include "MainFrm.h"
 
 extern TCHAR g_szGamePath[STRING_LENGTH];
 char buf[BUF_LENGTH * 16];

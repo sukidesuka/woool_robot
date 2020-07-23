@@ -1,5 +1,5 @@
 #pragma once
-#include "StdAfx.h"
+#include "framework.h"
 
 class CWoolMap
 {

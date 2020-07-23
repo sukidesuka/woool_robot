@@ -1,8 +1,14 @@
+
+// MainFrm.h: CMainFrame 类的接口
+//
+
 #pragma once
-#include "StdAfx.h"
+
+#include "framework.h"
 #include "ClientSocket.h"
 #include "WoolMap.h"
 #include "Actor.h"
+#include "ChildView.h"
 
 //游戏人物状态
 struct MAXMININFO
@@ -141,27 +147,51 @@ struct magic_item
 	unsigned long exp_need[3];
 };
 
-#define CFrameWnd CBCGPFrameWnd
+
 #define MAX_BAG_ITEM_COUNT (100)
 #define MAX_MAGIC_COUNT (100)
 #define MAX_BODY_ITEM_COUNT (100)
-class CMainFrame : CWnd
+
+class CMainFrame : public CFrameWnd
 {
 public:
-	CMainFrame();
-	~CMainFrame();
+	CMainFrame() noexcept;
+	CHARACTERINFO m_CharSelf;
+protected:
+	DECLARE_DYNAMIC(CMainFrame)
 
-	CString m_server_host;
-	int m_server_port;
-	CString m_server_name;
-	CString m_game_path;
+	// 特性
+public:
 
-	CString m_account;
-	CString m_password;
+	// 操作
+public:
 
-	CPtrList			m_ActorList;
-	CHARACTERINFO m_CharSelf;		// 角色信息
-	bool m_IsMoveRun;
+	// 重写
+public:
+	virtual BOOL PreCreateWindow(CREATESTRUCT& cs);
+	virtual BOOL OnCmdMsg(UINT nID, int nCode, void* pExtra, AFX_CMDHANDLERINFO* pHandlerInfo);
+
+	// 实现
+public:
+	virtual ~CMainFrame();
+#ifdef _DEBUG
+	virtual void AssertValid() const;
+	virtual void Dump(CDumpContext& dc) const;
+#endif
+
+protected:  // 控件条嵌入成员
+	CToolBar        m_wndToolBar;
+	CChildView		m_wndView;
+	CPtrList		m_ActorList;
+
+	// 生成的消息映射函数
+protected:
+	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
+	afx_msg void OnSetFocus(CWnd* pOldWnd);
+	afx_msg void OnLoginGame();
+	DECLARE_MESSAGE_MAP()
+
+public:
 	void OnConnect(int nErrorCode, CClientSocket* socket);
 	void OnReceive(int nErrorCode, CClientSocket* socket);
 	void OnClose(int nErrorCode, CClientSocket* socket);
@@ -169,12 +199,19 @@ public:
 	CString m_SID;
 	CWoolMap m_GameMap;
 	CString m_CharacterName;
+
+public:
 	CClientSocket* m_pSocket;
 	void Walk(int dir);
 	void Run(int dir);
+
+protected:
+	bool m_IsMoveRun;
+
+public:
 	unsigned char m_chFlag;
-	// TODO 明天起来把该清理的代码清理了，该实现的把MFC去掉再拷贝进.cpp。最后留个接口出来用就行
 	long m_GameStatus;
+	afx_msg void OnDestroy();
 	void ActorAppear(DWORD idx, long x, long y, LPCTSTR name, unsigned char type);
 	void ActorDisappear(DWORD idx);
 	CActor* GetActorByIndex(DWORD idx);
@@ -188,4 +225,13 @@ public:
 	long m_DStarWidth;
 	long m_DStarHeight;
 	CString ParseActorName(CString name);
+
+	// 登录服务器所需要的定义
+	CString m_server_host;
+	int m_server_port;
+	CString m_server_name;
+	CString m_game_path;
+
+	CString m_account;
+	CString m_password;
 };
